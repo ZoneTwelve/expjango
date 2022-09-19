@@ -11,7 +11,11 @@ controller.public( 'login', ( ) => {
   console.log(`Your account is ${account}, and your password have ${password.length} digits.`);
 });
 
+controller.private( 'register', ( ) => {
+  console.log("Registering...");
+});
+
 var app = express( );
 Modular.upgrade( app );
 
-app.modular( 'sample', { router: router });
+app.modular( 'sample', { control: controller });
