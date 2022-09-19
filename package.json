@@ -1,0 +1,23 @@
+{
+  "name": "expressjs-modular-extension",
+  "version": "0.0.0",
+  "description": "It's a extension for Express.js, that will adding features about modular a sample program or application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZoneTwelve/expressjs-modular-extension.git"
+  },
+  "keywords": [
+    "Express.js",
+    "Extension"
+  ],
+  "author": "ZoneTwelve",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ZoneTwelve/expressjs-modular-extension/issues"
+  },
+  "homepage": "https://github.com/ZoneTwelve/expressjs-modular-extension#readme"
+}
