@@ -16,7 +16,7 @@ let controlMemory = { users: new Object( ) };
 Controller.public( 'login', ( account, password ) => {
   try{
     let user = controlMemory['users'][account];
-    if( controlMemory['users'][account]===password ){
+    if( user===password ){
       return { message:"Login success" };
     }
     return { error: "Login failed" };
@@ -56,6 +56,7 @@ Router.post("/signin", ( root, req, res ) => {
   console.log("----- Request -----");
   let { self } = root;
   let result = self.login( "test", "123456" );
+  root['userAuth']['login']( token );
   console.log( result );
   res.send( result );
 });
