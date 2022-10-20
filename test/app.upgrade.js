@@ -10,17 +10,31 @@ var http = require('http');
 Modular.upgrade( app );
 // End of express application
 
-// control.js: sample controller
+// ----- control.js: sample controller -----
 var Controller = new Modular.Controller( );
-Controller.public( 'login', ( account, password ) => { 
-  return `Your account is ${account}, and your password have ${password.length} digits.`;
+let controlMemory = { users: new Object( ) };
+Controller.public( 'login', ( account, password ) => {
+  try{
+    let user = controlMemory['users'][account];
+    if( controlMemory['users'][account]===password ){
+      return { message:"Login success" };
+    }
+    return { error: "Login failed" };
+  }catch( error ){
+    return { error: error };
+  }
 });
 
 Controller.private( 'register', ( a, p ) => {
-  return { account: a, password: p };
+  try{
+    controlMemory['users'][a] = p;
+    return { message:"Create account successful!" };
+  }catch( error ){
+    return { error };
+  }
 });
 
-// route.js: sample router
+// ----- route.js: sample router -----
 var Router = new Modular.Router( );
 
 Router.get('/', ( root, req, res ) => {
@@ -28,6 +42,22 @@ Router.get('/', ( root, req, res ) => {
   let { self } = root;
   console.log( self );
   res.send( 'Hello, World!' );
+});
+
+Router.post('/signup', ( root, req, res ) => {
+  console.log("----- Request -----");
+  let { self } = root;
+  let result = self.register( "test", "123456" );
+  console.log( result );
+  res.send( result );
+});
+
+Router.post("/signin", ( root, req, res ) => {
+  console.log("----- Request -----");
+  let { self } = root;
+  let result = self.login( "test", "123456" );
+  console.log( result );
+  res.send( result );
 });
 
 // End of sample modules
