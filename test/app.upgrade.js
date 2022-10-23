@@ -37,28 +37,35 @@ Controller.private( 'register', ( a, p ) => {
 // ----- route.js: sample router -----
 var Router = new Modular.Router( );
 
-Router.get('/', ( root, req, res ) => {
+Router.get('/', ( req, res, next ) => {
   console.log("----- Request -----");
-  let { self } = root;
+  let { self } = req.root;
   console.log( self );
-  res.send( 'Hello, World!' );
+  // res.send( 'Hello, World!' );
+  next( );
 });
 
-Router.post('/signup', ( root, req, res ) => {
+Router.post('/signup', ( req, res ) => {
   console.log("----- Request -----");
-  let { self } = root;
+  let { self } = req.root;
   let result = self.register( "test", "123456" );
   console.log( result );
   res.send( result );
 });
 
-Router.post("/signin", ( root, req, res ) => {
+Router.post("/signin", ( req, res ) => {
   console.log("----- Request -----");
-  let { self } = root;
+  let { self } = req.root;
   let result = self.login( "test", "123456" );
-  root['userAuth']['login']( token );
   console.log( result );
   res.send( result );
+});
+
+Router.get('/', ( req, res ) => {
+  console.log("----- Request -----");
+  let { self } = req.root;
+  console.log( self );
+  res.send( 'next Hello, World!' );
 });
 
 // End of sample modules
