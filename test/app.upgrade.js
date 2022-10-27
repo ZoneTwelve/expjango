@@ -7,6 +7,7 @@ var Modular = require('..');
 // www: Create express application
 var app = express( );
 var http = require('http');
+const { setEnvironmentData } = require('worker_threads');
 Modular.upgrade( app );
 // End of express application
 
@@ -71,12 +72,39 @@ Router.get('/', ( req, res ) => {
 // End of sample modules
 
 
-// app.js: 
+// ----- Socket.js: sample socket -----
+
+var Socket = new Modular.Socket( );
+
+Socket.on('connection', ( socket ) => {
+  console.log("----- Socket connection -----");
+  console.log("Socket ID: ", socket.id);
+  socket.send( "Hello, World!" );
+});
+
+Socket.on('close', ( socket ) => {
+  console.log("----- Socket close -----");
+});
+
+Socket.on('message', ( socket, message ) => {
+  console.log("----- Socket message -----");
+  console.log( message );
+});
+
+Socket.on('error', ( socket, error ) => {
+  console.log("----- Socket error -----");
+  console.log( error );
+});
+
+// End of sample socket 
+
+// app.js:
 // app constructor
 // create an sub-modules
-app.modular( 'sample', { control: Controller, route: Router } );
+let sampleConfig = { control: Controller, route: Router, socket: Socket };
+app.modular( 'sample', sampleConfig );
 let { sample } = app.modules;
-console.log( sample );
+console.log( "sample modules:", sample );
 // End of app.js
 
 // test
@@ -84,7 +112,14 @@ console.log( sample );
 let loginResult = sample.control.login( 'test', '123456' );
 let registerResult = sample.control.register( 'test', '123456' );
 
-
 console.log( {loginResult, registerResult} );
 
-http.createServer( app ).listen( 3000 );
+let server = http.createServer( app );
+for(let key in app.modules){
+  let { socket } = app.modules[key];
+  if( socket ){
+    socket.construct( server );
+  }
+}
+
+server.listen( 3000 );

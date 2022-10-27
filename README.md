@@ -37,5 +37,13 @@ Controller.private("login", Login);
 ```
 
 ## Router
+Same as a normal Router, but add a root manager for accessing other modules.
 
 ## Models
+
+--- Prepairing ---
+
+# TODO
+ - Automatic turn controller into an API
+ - Support socket
+ - Support three-party socket modules
