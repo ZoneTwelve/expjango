@@ -69,31 +69,36 @@ Router.get('/', ( req, res ) => {
   res.send( 'next Hello, World!' );
 });
 
+Router.get('/socket', ( req, res ) => {
+  let { sample } = req.root.modules;
+  sample.socket.publish("Hello");
+  res.send("Done");
+});
+
 // End of sample modules
 
 
 // ----- Socket.js: sample socket -----
 
-var Socket = new Modular.Socket( );
+var Socket = new Modular.Socket( { noServer: true } );
 
-Socket.on('connection', ( socket ) => {
+Socket.on('connection', ( client ) => {
   console.log("----- Socket connection -----");
-  console.log("Socket ID: ", socket.id);
-  socket.send( "Hello, World!" );
+  console.log("Socket ID: ", client.id);
+  client.on("message", ( data ) => {
+    console.log( data );
+    client.send( "Hello, World!" );
+  });
+  // client.send( "Hello, World!" );
 });
 
-Socket.on('close', ( socket ) => {
+Socket.on('disconnect', ( client ) => {
   console.log("----- Socket close -----");
+  console.log("Socket ID: ", client.id);  
 });
 
-Socket.on('message', ( socket, message ) => {
-  console.log("----- Socket message -----");
-  console.log( message );
-});
-
-Socket.on('error', ( socket, error ) => {
-  console.log("----- Socket error -----");
-  console.log( error );
+Socket.hook("publish", ( ws, message ) => {
+  ws.broadcast( message );
 });
 
 // End of sample socket 
