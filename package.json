@@ -1,14 +1,14 @@
 {
-  "name": "expressjs-modular-extension",
+  "name": "expjango",
   "version": "0.0.0",
   "description": "It's a extension for Express.js, that will adding new features of modularization.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZoneTwelve/expressjs-modular-extension.git"
+    "url": "git+https://github.com/ZoneTwelve/expjango.git"
   },
   "keywords": [
     "Express.js",
@@ -18,7 +18,15 @@
   "author": "ZoneTwelve",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ZoneTwelve/expressjs-modular-extension/issues"
+    "url": "https://github.com/ZoneTwelve/expjango/issues"
   },
-  "homepage": "https://github.com/ZoneTwelve/expressjs-modular-extension#readme"
+  "homepage": "https://github.com/ZoneTwelve/expjango#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0",
+    "supertest": "^6.3.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
