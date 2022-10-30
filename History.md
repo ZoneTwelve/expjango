@@ -1,7 +1,11 @@
-# [Release][52af1e6] 0.0.0 / 2022-10-29
+# 0.0.0 / 2022-10-30
+- Fix Router
+  - Won't return "Router" instance
+- Renamed to **exprango**
+
+# [f81e111] 0.0.0 / 2022-10-29
 - Updated Socket
   - Socket can access by modules
-
 - Renamed **expjango**
 
 

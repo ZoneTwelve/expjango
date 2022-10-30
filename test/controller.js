@@ -1,6 +1,6 @@
 var assert = require('assert');
-var Expjango = require('../');
-var Controller = Expjango.Controller;
+var Exprango = require('../');
+var Controller = Exprango.Controller;
 var control = null;
 
 

@@ -5,12 +5,12 @@ const request = require("supertest");
 const http = require("http");
 
 const express = require("express");
-const expjango = require("../");
+const exprango = require("../");
 
 var app = express();
-expjango.upgrade( app );
+exprango.upgrade( app );
 
-var Router = new expjango.Router( );
+var Router = new exprango.Router( );
 
 Router.get("/", ( req, res ) => {
   res.send("OK");

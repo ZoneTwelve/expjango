@@ -2,19 +2,19 @@ var assert = require("assert");
 
 var request = require("supertest");
 var express = require("express");
-var Expjango = require("../");
+var Exprango = require("../");
 
-var Controller = Expjango.Controller;
-var Router = Expjango.Router;
-var Socket = Expjango.Socket;
+var Controller = Exprango.Controller;
+var Router = Exprango.Router;
+var Socket = Exprango.Socket;
 
-// describe upgrade express to Expjango
+// describe upgrade express to Exprango
 
 
-describe("Expjango upgrade", function( ){
-  it("Should upgrade express to Expjango", function( ){
+describe("Exprango upgrade", function( ){
+  it("Should upgrade express to Exprango", function( ){
     var app = express( );
-    Expjango.upgrade( app );
+    Exprango.upgrade( app );
     let modularIsFunction = typeof app.modular;
     let modulesIsObject = typeof app.modules;
   
@@ -23,10 +23,10 @@ describe("Expjango upgrade", function( ){
   });
 })
 
-describe("Expjango with Controller", function( ){
+describe("Exprango with Controller", function( ){
   var notAllowErrorMessage = "This method is not allowed to be used.";
   var app = express( );
-  Expjango.upgrade( app );
+  Exprango.upgrade( app );
   it("Should create a modular application with Controller", function( ){
     let control = new Controller( );
     control.public( "test", ( ) => "test" );
@@ -39,7 +39,7 @@ describe("Expjango with Controller", function( ){
   });
 });
 
-describe("Expjango with Router", function( ){
+describe("Exprango with Router", function( ){
   it("Should using router create a submodule", function( ){
     let router = new Router( );
     router.get( "/", ( req, res ) => res.send("test") );

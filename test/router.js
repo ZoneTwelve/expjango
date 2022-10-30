@@ -1,13 +1,13 @@
 var request = require("supertest");
 var assert = require('assert');
 var express = require("express");
-var expjango = require('../');
-var Router = expjango.Router;
+var exprango = require('../');
+var Router = exprango.Router;
 
 describe('Router', function( ){
   let app = express( );
   let route = null;
-  expjango.upgrade( app );
+  exprango.upgrade( app );
 
   it('Should return a router', function( ){
     route = new Router( );
@@ -16,14 +16,14 @@ describe('Router', function( ){
     assert(typeof route.complete === "function");
   });
 
-  it("Should make 'GET /app' availiable", function( done ){
+  it("Should make 'GET /app' avaliable", function( done ){
     let res_one = "OK, GET /";
     let res_404 = "Not found";
     route.get('/', (req, res) => {
       res.send( res_one );
     });
     route.all('*', (req, res) => res.status(404).send( res_404 ));
-    expjango.upgrade( app );
+    exprango.upgrade( app );
     app.modular( "app", { route } );
     request( app )
       .get('/app')

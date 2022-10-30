@@ -1,4 +1,4 @@
-# Expjango - a express.js modular extension
+# exprango - a express.js modular extension
 ## Introduction
 Sometimes creates an application with friends will be a little hard, so I create this modular extension for making express.js user's code turn into a module.
 
@@ -17,7 +17,7 @@ It's an essential function for sub-modules itself, but this also has outsider ca
 
 ### How to use
 ```
-var { Controller } = require("expjango");
+const { Controller } = require("exprango");
 ```
 
 ### Public method:

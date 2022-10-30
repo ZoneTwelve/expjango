@@ -1,6 +1,6 @@
 {
   "name": "expjango",
-  "version": "0.0.0",
+  "version": "0.0.0-a",
   "description": "It's a extension for Express.js, that will adding new features of modularization.",
   "main": "index.js",
   "scripts": {
