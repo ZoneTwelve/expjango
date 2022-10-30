@@ -2,17 +2,17 @@
 'use strict'
 
 var express = require('express');
-var Modular = require('..');
+var expjango = require('..');
 
 // www: Create express application
 var app = express( );
 var http = require('http');
 const { setEnvironmentData } = require('worker_threads');
-Modular.upgrade( app );
+expjango.upgrade( app );
 // End of express application
 
 // ----- control.js: sample controller -----
-var Controller = new Modular.Controller( );
+var Controller = new expjango.Controller( );
 let controlMemory = { users: new Object( ) };
 Controller.public( 'login', ( account, password ) => {
   try{
@@ -36,7 +36,7 @@ Controller.private( 'register', ( a, p ) => {
 });
 
 // ----- route.js: sample router -----
-var Router = new Modular.Router( );
+var Router = new expjango.Router( );
 
 Router.get('/', ( req, res, next ) => {
   console.log("----- Request -----");
@@ -80,7 +80,7 @@ Router.get('/socket', ( req, res ) => {
 
 // ----- Socket.js: sample socket -----
 
-var Socket = new Modular.Socket( { noServer: true } );
+var Socket = new expjango.Socket( { noServer: true } );
 
 Socket.on('connection', ( client ) => {
   console.log("----- Socket connection -----");
