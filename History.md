@@ -1,4 +1,10 @@
-# 0.0.0 / 2022-10-30
+# 0.0.1 / 2022-10-31
+- Updated Router
+  - Support Router.setView
+    - view, layout, partials, extension, engine
+  - Support res.render with his own configrations
+
+# [35d44d1] 0.0.0 / 2022-10-30
 - Fix Router
   - Won't return "Router" instance
 - Renamed to **exprango**

@@ -1,6 +1,6 @@
 {
-  "name": "expjango",
-  "version": "0.0.0-a",
+  "name": "exprango",
+  "version": "0.0.1",
   "description": "It's a extension for Express.js, that will adding new features of modularization.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZoneTwelve/expjango.git"
+    "url": "git+https://github.com/ZoneTwelve/exprango.git"
   },
   "keywords": [
     "Express.js",
@@ -18,9 +18,9 @@
   "author": "ZoneTwelve",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ZoneTwelve/expjango/issues"
+    "url": "https://github.com/ZoneTwelve/exprango/issues"
   },
-  "homepage": "https://github.com/ZoneTwelve/expjango#readme",
+  "homepage": "https://github.com/ZoneTwelve/exprango#readme",
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.1.0",

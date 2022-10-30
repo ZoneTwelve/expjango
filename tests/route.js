@@ -17,14 +17,14 @@ Router.get("/", ( req, res ) => {
 })
 app.modular( "app", { route: Router } );
 
-request(app)
+
+/*request(app)
   .get('/app')
   .expect(200)
   .end(function(err, res) {
     if (err) throw err;
-    console.log( res );
   });
-
-//var server = http.createServer( app );
+*/
+var server = http.createServer( app );
 // middle hook of socket or other applications
-//server.listen( 3000 );
+server.listen( 3000 );
