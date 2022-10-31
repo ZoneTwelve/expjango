@@ -1,4 +1,31 @@
-# 0.0.1 / 2022-10-31
+# 2022-10-31
+- Render updated 
+  - Support default configration for rendering
+    ```javascript
+    Router.setView( "default", [
+      {
+        name: "layout",
+        format: "static",
+        replaceable: false,
+        content: "main"
+      },
+      {
+        name: "partials/navbar",
+        format: "dynamic",
+        replaceable: true,
+        parser: () => path.join( "partials", "navbar" )
+      }
+    ]);
+    ```
+  - Support partials conponments
+    ```handlebars
+    <body>
+      <h1>Second design</h1>
+      {{{ body }}}
+      {{{ partials.navbar }}}
+    </body>
+    ```
+# [1a5dac7] 0.0.1 / 2022-10-31
 - Updated Router
   - Support Router.setView
     - view, layout, partials, extension, engine

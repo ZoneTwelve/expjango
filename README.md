@@ -41,10 +41,14 @@ Controller.private("login", Login);
 ## Router
 Same as a normal Router, but add a root manager for accessing other modules.
 
+### Render
+some of them is on the History.md.
+
 ## Models
 --- Prepairing ---
 
 # TODO
  - Support three-party socket modules
- - Router
-   - render middleware ( change the base directory of templates )
+ - Router Render
+    - with default configrations
+    
